@@ -1,0 +1,28 @@
+Observer_Pattern
+AKA publish subscribe
+
+Update relevant systems when a value changes (aka the excel value change)
+
+Allows for coupling of integrated components so events can be percolated to relevant systems.
+
+abstract SUBJECT
++attach(observer)
++detach(observer)
++Notify()
+{
+    for o in observers:
+        update()
+}
+
+abstract OBSERVER
++Update()
+
+CONCRETESUBJECT extends SUBJECT
++observerstate
++Update()
+{
+    oberservstate = subject.getState()
+}
+
+
+
