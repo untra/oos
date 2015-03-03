@@ -1,14 +1,16 @@
 
-public class CorrectReport {
+public class CorrectReport extends Report{
 
 	private static int numberCorrect;	
 	
-	public CorrectReport(){
+	public CorrectReport(Subject s){
+		super(s);
 		numberCorrect = 0;
 	}
 	
-	public void update(boolean passed){
-		if(passed)
+	public void update(){
+		Submission sub = (Submission) subject;
+		if(sub.wasPassed())
 			numberCorrect++;
 	}
 	
