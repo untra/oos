@@ -31,30 +31,29 @@ public class Problem1Driver {
 //		If submissions were added and processed in the same fifo order, than the Singleton SubmissionQueue is a success
 //		Sample output:
 		
-//Singleton SubmissionQueue
-//adding submissions
-//adding submission 425817
-//adding submission 2909208
-//adding submission 4460544
-//adding submission 1992079
-//adding submission 2788502
-//adding submission 2204534
-//adding submission 6803198
-//adding submission 5546922
-//adding submission 6019108
-//adding submission 9484358
-//processing submissions
-//processing submission 425817
-//processing submission 2909208
-//processing submission 4460544
-//processing submission 1992079
-//processing submission 2788502
-//processing submission 2204534
-//processing submission 6803198
-//processing submission 5546922
-//processing submission 6019108
-//processing submission 9484358
+		// Singleton SubmissionQueue
+		// adding submissions
+		// adding submission 425817
+		// adding submission 2909208
+		// adding submission 4460544
+		// adding submission 1992079
+		// adding submission 2788502
+		// adding submission 2204534
+		// adding submission 6803198
+		// adding submission 5546922
+		// adding submission 6019108
+		// adding submission 9484358
+		// processing submissions
+		// processing submission 425817
+		// processing submission 2909208
+		// processing submission 4460544
+		// processing submission 1992079
+		// processing submission 2788502
+		// processing submission 2204534
+		// processing submission 6803198
+		// processing submission 5546922
+		// processing submission 6019108
+		// processing submission 9484358
 		 
-		
 	}
 }
