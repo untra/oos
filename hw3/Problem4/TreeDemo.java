@@ -34,22 +34,30 @@ class Tree implements Terrain
 }
 class TreeFactory
 {
-	private static final ArrayList<Tree> mylist = new ArrayList<Tree>();
+//	private static final ArrayList<Tree> mylist = new ArrayList<Tree>();
+	private static final Map<String, Tree> trees = new HashMap<String, Tree>();
 	public static Terrain getTree(String type)
 	{
-		Tree tree = new Tree(type);
-		mylist.add(tree);
-		return tree;
+		Tree tempTree = trees.get(type);
+		if(tempTree == null){
+			tempTree = new Tree(type);
+			trees.put(type, tempTree);
+		}
+		return tempTree;
+//		Tree tree = new Tree(type);
+//		mylist.add(tree);
+//		return tree;
+		
    }
 }
 /**
- * Don’t change anything in TreeDemo
+ * Don't change anything in TreeDemo
  */
 class TreeDemo extends JPanel
 {
 	private static final int width = 800;
 	private static final int height = 700;
-	private static final int numTrees = 50;
+	private static final int numTrees = 1000;
 	private static final String type[] = { "Apple", "Lemon", "Blob", "Elm", "Maple" };
 
 	public void paint(Graphics graphics)

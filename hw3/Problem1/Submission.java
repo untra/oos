@@ -2,8 +2,6 @@
 * Submission.java
 *
 * A basic dummy Submission object for use with the auto-grader
-* Samuel Volin
-* Cris Salazar
 */
 
 import java.util.Random;
@@ -24,3 +22,4 @@ public class Submission
 	  return id;
   }
 }
+
