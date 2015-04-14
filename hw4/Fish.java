@@ -5,9 +5,12 @@
 */
 
 import java.lang.Math;
+import java.util.Observable;
 import java.util.Random;
 
-public class Fish
+import sun.awt.SunHints.Value;
+
+public class Fish extends Observable
 {
 
   private static Random random = new Random();
@@ -15,8 +18,8 @@ public class Fish
   public static final double INITIALHUNGER = 0.9;
   public static final double INITIALSIZE = 1.0;
   public static final double MINIMUMSTARVING = 0.2;
-  public static final double MINIMUMHUNGERY = 0.2;
-  public static final double MAXIMUMSIZENOTTOGETEATEN = 0.5;
+  public static final double MINIMUMHUNGERY = 0.7;
+  public static final double MAXIMUMSIZENOTTOGETEATEN = 5.0;
   public static final double MINIMUMSIZETOEATOTHERFISH = 7.0;
   
   
@@ -29,7 +32,7 @@ public class Fish
 
   // Don't want to be able to directly query the fish for information, but do 
   // need to get information for logging or displaying on a GUI, etc.
-  private FishReport myFishReport = null;
+//  private FishReport myFishReport = null;
 
   public Fish(double x, double y, FishReport report)
   {
@@ -46,19 +49,19 @@ public class Fish
     numberOfFish++;
 
     // Who to report to?
-    myFishReport = report;
+    addObserver(report);
     //fishstretegy
-    
     updateMoveStrategy();
-    
-    if(myFishReport != null)
-    {
-      myFishReport.updateHunger(hunger);
-      myFishReport.updateSize(size);
-      myFishReport.updateLocation(x, y);
-    }
+    setChanged();
+    notifyObservers(values());
   }
 
+  private double[] values()
+  {
+	  double[] value = {hunger,size,x,y};
+	  return value;
+  }
+  
   public double getSize()           
   {
     return size;
@@ -75,8 +78,8 @@ public class Fish
     // has been consumed
     hunger = hunger * Math.exp(-deltaSize/size);
 
-    myFishReport.updateHunger(hunger);
-    myFishReport.updateSize(size);   
+    setChanged();
+    notifyObservers(values());  
   }
 
   public void move(Pond pond)
@@ -92,7 +95,8 @@ public class Fish
     x = x + (tx/distance);
     y = y + (ty/distance);
 
-    myFishReport.updateLocation(x, y);
+    setChanged();
+    notifyObservers(values());
   }
 
 
@@ -103,7 +107,8 @@ public class Fish
     x = x - (tx/distance);
     y = y - (ty/distance);
 
-    myFishReport.updateLocation(x, y);
+    setChanged();
+    notifyObservers(values());
   }
 
 
@@ -115,7 +120,8 @@ public class Fish
     x = x + random.nextDouble();
     y = y + random.nextDouble();
 
-    myFishReport.updateLocation(x, y);
+    setChanged();
+    notifyObservers(values());
   }
 
   // Just let the world know I hid!

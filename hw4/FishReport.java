@@ -1,10 +1,13 @@
+import java.util.Observable;
+import java.util.Observer;
+
 /**
 * FishReport
 *
 * An object individual fish update whenever their status changes
 */
 
-public class FishReport
+public class FishReport implements Observer
 {
   private double hunger;
   private double size;
@@ -50,5 +53,14 @@ public class FishReport
   {
     double location[] = {x, y};
     return location;
+  }
+
+
+  @Override
+  public void update(Observable o, Object args) {
+	  double[] value = (double[]) args;
+	  updateHunger(value[0]);
+	  updateSize(value[1]);
+	  updateLocation(value[2], value[3]);
   }
 }
